@@ -30,7 +30,7 @@ dev = [
     "pylint >= 2.15.10",
 ]
 notebook = [
-    "jupyter >= 5.1.4",
+    "jupyter ~= 1.0.0",
 ]
 plot = [
     "matplotlib ~= 3.4.3",
