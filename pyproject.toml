@@ -1,52 +1,52 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
-[metadata]
+[project]
 name = "preisach"
-version = "attr: preisach.VERSION"
+dynamic = ["version", "readme"]
 authors = [
     { name="Isaac Kramer", email="43068145+isaackramer@users.noreply.github.com" },
     { name="Peter Hillerström", email="peter.hillerstrom@gmail.com" },
 ]
-url = "https://github.com/isaackramer/python-preisach"
 description = "Python implementation of the Preisach model of hysteresis"
-long_description = "file: README.md"
-long_description_content_type = "text/markdown"
-keywords = "hysteresis"
-license = "MIT"
+requires-python = ">=3.7"
+keywords = [
+    "hysteresis",
+]
+license = { text = "MIT License" }
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Physics",
 ]
-
-[options]
-packages = "find:"
-package_dir = "=src"
-zip_safe = true
-include_package_data = true
-install_requires = [
+dependencies = [
     "numpy >= 1.23.5",
     "palettable >= 3.3.0",
 ]
 
-[options.extras_require]
-notebook = [
-    "jupyter >= 5.1.4",
-]
+[project.optional-dependencies]
 dev = [
     "black >= 22.1.0",
     "flake8 >= 6.0.0",
     "pycodestyle >= 2.10.0",
     "pylint >= 2.15.10",
 ]
+notebook = [
+    "jupyter >= 5.1.4",
+]
 plot = [
-    "matplotlib >= 3.4.3",
+    "matplotlib ~= 3.4.3",
 ]
 
-[options.package_data]
-preisach = [
-    "*.txt",
-    "README.md",
-]
+[project.urls]
+"Homepage" = "https://github.com/isaackramer/python-preisach"
+"Bug Tracker" = "https://github.com/isaackramer/python-preisach/issues"
+
+[tool.setuptools]
+packages = "find:"
+package_dir = "=src"
+
+[tool.setuptools.dynamic]
+version = {attr = "preisach.VERSION"}
+readme = {file = ["README.md"]}
