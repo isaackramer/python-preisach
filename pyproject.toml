@@ -1,6 +1,6 @@
 [project]
 name = "preisach"
-dynamic = ["version", "readme"]
+dynamic = ["version"]
 authors = [
     { name="Isaac Kramer", email="43068145+isaackramer@users.noreply.github.com" },
     { name="Peter Hillerström", email="peter.hillerstrom@gmail.com" },
