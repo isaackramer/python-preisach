@@ -39,6 +39,9 @@ plot = [
     "matplotlib ~= 3.4.3",
 ]
 
+# [project.gui-scripts]
+# preisach-widget = preisach.plot_preisach_widget:main [plot]
+
 [project.urls]
 "Homepage" = "https://github.com/isaackramer/python-preisach"
 "Bug Tracker" = "https://github.com/isaackramer/python-preisach/issues"
