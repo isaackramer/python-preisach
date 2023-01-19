@@ -47,9 +47,9 @@ plot = [
 "Bug Tracker" = "https://github.com/isaackramer/python-preisach/issues"
 
 [tool.setuptools]
-packages = "find:"
+packages = ["preisach"]
 package_dir = "=src"
 
 [tool.setuptools.dynamic]
-version = {attr = "preisach.VERSION"}
+version = {attr = "preisach.__version__"}
 readme = {file = ["README.md"]}
