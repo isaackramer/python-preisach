@@ -1,0 +1,10 @@
+# Python
+*.egg-info/
+*.pyc
+MANIFEST
+build/
+dist/
+src/
+
+# Environments
+venv/
