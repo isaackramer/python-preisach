@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "preisach"
 dynamic = ["version", "readme"]
@@ -10,16 +6,17 @@ authors = [
     { name="Peter Hillerström", email="peter.hillerstrom@gmail.com" },
 ]
 description = "Python implementation of the Preisach model of hysteresis"
-requires-python = ">=3.7"
+readme = "README.md"
 keywords = [
     "hysteresis",
 ]
-license = { text = "MIT License" }
+license.text = "MIT License"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Physics",
 ]
+requires-python = ">=3.7"
 dependencies = [
     "numpy >= 1.23.5",
     "palettable >= 3.3.0",
@@ -43,13 +40,15 @@ plot = [
 # preisach-widget = preisach.plot_preisach_widget:main [plot]
 
 [project.urls]
-"Homepage" = "https://github.com/isaackramer/python-preisach"
-"Bug Tracker" = "https://github.com/isaackramer/python-preisach/issues"
+"Source code" = "https://github.com/isaackramer/python-preisach"
+"Issue tracker" = "https://github.com/isaackramer/python-preisach/issues"
 
 [tool.setuptools]
 packages = ["preisach"]
-package_dir = "=src"
 
 [tool.setuptools.dynamic]
-version = {attr = "preisach.__version__"}
-readme = {file = ["README.md"]}
+version.attr = "preisach.__version__"
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
