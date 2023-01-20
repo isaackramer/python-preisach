@@ -1,0 +1,54 @@
+[project]
+name = "preisach"
+dynamic = ["version"]
+authors = [
+    { name="Isaac Kramer", email="43068145+isaackramer@users.noreply.github.com" },
+    { name="Peter Hillerström", email="peter.hillerstrom@gmail.com" },
+]
+description = "Python implementation of the Preisach model of hysteresis"
+readme = "README.md"
+keywords = [
+    "hysteresis",
+]
+license.text = "MIT License"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "numpy >= 1.23.5",
+    "palettable >= 3.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black >= 22.1.0",
+    "flake8 >= 6.0.0",
+    "pycodestyle >= 2.10.0",
+    "pylint >= 2.15.10",
+]
+notebook = [
+    "jupyter ~= 1.0.0",
+]
+plot = [
+    "matplotlib ~= 3.4.3",
+]
+
+# [project.gui-scripts]
+# preisach-widget = preisach.plot_preisach_widget:main [plot]
+
+[project.urls]
+"Source code" = "https://github.com/isaackramer/python-preisach"
+"Issue tracker" = "https://github.com/isaackramer/python-preisach/issues"
+
+[tool.setuptools]
+packages = ["preisach"]
+
+[tool.setuptools.dynamic]
+version.attr = "preisach.__version__"
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"

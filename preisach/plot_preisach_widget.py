@@ -1,12 +1,14 @@
 """One input widget"""
 
-import numpy as np
-from preisach_python import preisach_single_value
-from weights import weights
-import matplotlib.pyplot as plt
-from matplotlib.widgets import Slider, Button
 import matplotlib.gridspec as gridspec
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib.widgets import Slider, Button
 from palettable.colorbrewer.sequential import YlGnBu_9
+
+from .preisach_python import preisach_single_value
+from .weights import weights
 
 
 # number of hysterons on each side of the triangle

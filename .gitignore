@@ -1,0 +1,9 @@
+# Python
+*.egg-info/
+*.pyc
+MANIFEST
+build/
+dist/
+
+# Environments
+venv/
