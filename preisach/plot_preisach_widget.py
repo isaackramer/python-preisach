@@ -52,9 +52,7 @@ ax2 = plt.subplot(gs[0, 1])  # Preisach plane
 ax3 = plt.subplot(gs[1, 1])  # Weights
 
 (plot1,) = ax1.plot(inputs[0], 1 - outputs[0], color="red")
-plot2 = ax2.pcolormesh(
-    beta_grid, alpha_grid, preisach_triangle, cmap=YlGnBu_9.mpl_colormap
-)
+plot2 = ax2.pcolormesh(beta_grid, alpha_grid, preisach_triangle, cmap=YlGnBu_9.mpl_colormap)
 plot3 = ax3.scatter(beta_grid, alpha_grid, c=mu, cmap=YlGnBu_9.mpl_colormap, s=0.2)
 
 
