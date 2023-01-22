@@ -1,30 +1,40 @@
 """function for creating different weight functions"""
 import numpy as np
 
-def weights(method, beta_grid, alpha_grid):
-    distance = (alpha_grid - beta_grid)/np.sqrt(2)
-    mu =  {
-           'uniform': np.where(alpha_grid>=beta_grid, 1, np.nan),
-           'linear': np.where(alpha_grid==beta_grid, 1, np.nan),
-           'top_heavy': np.where(alpha_grid>=beta_grid, alpha_grid, np.nan),
-           'bottom_heavy': np.where(alpha_grid>=beta_grid, 1-alpha_grid, np.nan),
-           'right_heavy': np.where(alpha_grid>=beta_grid, beta_grid, np.nan),
-           'left_heavy': np.where(alpha_grid>=beta_grid, 1-beta_grid, np.nan),
-           'center_light_alpha': np.where(alpha_grid>=beta_grid, np.abs(0.5-alpha_grid), np.nan),
-           'center_light_beta': np.where(alpha_grid>=beta_grid, np.abs(0.5-beta_grid), np.nan),
-           'single_line': np.where(np.logical_and(0.3<beta_grid, beta_grid<0.5), 1, 0),
-           'upper_left': np.where(np.logical_and(0.6>beta_grid, alpha_grid>0.90), 1, 0),
-           'near_diagonal': np.where((alpha_grid-beta_grid)<0.2, 1, 0),
-           'far_diagonal': np.where((alpha_grid-beta_grid)<0.5, 0, 1),
-           'dirac_detal': np.where(np.logical_and(0.5 == beta_grid, alpha_grid == 0.5), 1, 0),
-           'irreversible': np.where(alpha_grid>=beta_grid, distance, 0),
-           'reversible': np.where(alpha_grid>=beta_grid, (1-distance)**4, 0),
-           'set_1': np.where(alpha_grid>=beta_grid, (1-distance), np.nan),
-           'set_2': np.where(alpha_grid>=beta_grid, (1-distance)**2, np.nan),
-           'set_3': np.where(alpha_grid>=beta_grid, (1-distance)**4, np.nan),
-           'mcneal': np.where(np.logical_and(np.logical_or(0.3>beta_grid, 0.8<beta_grid), alpha_grid>0.8), 1, 0),
-           }[method]
-    mu = np.where(alpha_grid>=beta_grid, mu, np.nan)
-    mass = np.nansum(mu)
-    mu = mu/mass
+from numpy import where, nan, nansum
+
+
+def weights(method, beta, alpha):
+    distance = (alpha - beta) / np.sqrt(2)
+    mu = {
+        "uniform": where(alpha >= beta, 1, nan),
+        "linear": where(alpha == beta, 1, nan),
+        "top_heavy": where(alpha >= beta, alpha, nan),
+        "bottom_heavy": where(alpha >= beta, 1 - alpha, nan),
+        "right_heavy": where(alpha >= beta, beta, nan),
+        "left_heavy": where(alpha >= beta, 1 - beta, nan),
+        "center_light_alpha": where(alpha >= beta, np.abs(0.5 - alpha), nan),
+        "center_light_beta": where(alpha >= beta, np.abs(0.5 - beta), nan),
+        "single_line": where(np.logical_and(0.3 < beta, beta < 0.5), 1, 0),
+        "upper_left": where(np.logical_and(0.6 > beta, alpha > 0.90), 1, 0),
+        "near_diagonal": where((alpha - beta) < 0.2, 1, 0),
+        "far_diagonal": where((alpha - beta) < 0.5, 0, 1),
+        "dirac_detal": where(np.logical_and(0.5 == beta, alpha == 0.5), 1, 0),
+        "irreversible": where(alpha >= beta, distance, 0),
+        "reversible": where(alpha >= beta, (1 - distance) ** 4, 0),
+        "set_1": where(alpha >= beta, (1 - distance), nan),
+        "set_2": where(alpha >= beta, (1 - distance) ** 2, nan),
+        "set_3": where(alpha >= beta, (1 - distance) ** 4, nan),
+        "mcneal": where(
+            np.logical_and(
+                np.logical_or(0.3 > beta, 0.8 < beta),
+                alpha > 0.8
+            ),
+            1,
+            0
+        ),
+    }[method]
+    mu = where(alpha >= beta, mu, nan)
+    mass = nansum(mu)
+    mu = mu / mass
     return mu
